@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.sqlite3
+*.db
+backend/voicescribe.db
+backend/instance/
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/.env
+backend/venv/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Local artifacts
+exports/
+logs/
+.DS_Store
+Thumbs.db

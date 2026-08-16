@@ -568,7 +568,20 @@ html {
 .topbar-search {
   gap: 10px;
   color: #64748b;
+  display: flex;
+  align-items: center;
 }
+.topbar-search-label { margin-left: 8px; }
+.topbar-search-input {
+  margin-left: 8px;
+  border: 0;
+  background: transparent;
+  padding: 6px 8px;
+  border-radius: 8px;
+  min-width: 220px;
+  display: inline-block;
+}
+.topbar-search .icon-button { width: 36px; height: 36px; }
 .topbar-user { gap: 12px; text-align: right; }
 .topbar-user strong { display: block; }
 .icon-button {
@@ -582,6 +595,13 @@ html {
   color: #334155;
 }
 .icon-button:hover { border-color: #10b981; color: #047857; background: #ecfdf5; }
+
+/* mobile specific: collapse search label and show toggle */
+@media (max-width: 767px) {
+  .topbar-search-label { display: none; }
+  .topbar-search-input { display: none; }
+  .topbar-search.open .topbar-search-input { display: inline-block; min-width: calc(100vw - 160px); }
+}
 
 .page {
   padding: 28px;

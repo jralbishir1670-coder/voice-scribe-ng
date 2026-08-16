@@ -24,7 +24,7 @@ export default function ProtectedRoute() {
       <a className="skip-link" href="#app-content">Skip to main content</a>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className="main-panel" id="app-content" tabIndex="-1">
-        <Navbar onToggle={() => setSidebarOpen((v) => !v)} />
+        <Navbar onToggle={() => setSidebarOpen((v) => !v)} menuOpen={sidebarOpen} />
         <Outlet />
       </main>
       {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} aria-hidden="true" />}

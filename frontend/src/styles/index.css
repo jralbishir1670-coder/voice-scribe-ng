@@ -464,11 +464,62 @@ html {
   background: #f8fafc;
 }
 
+/* Sidebar (desktop + mobile) */
 .sidebar {
   border-right: 1px solid #e2e8f0;
   padding: 24px 18px;
   background: #ffffff;
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
 }
+
+/* Desktop: default positioning handled by app-shell grid */
+
+/* Mobile: collapse the sidebar off-canvas and provide an overlay/backdrop */
+@media (max-width: 767px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(320px, 80%);
+    transform: translateX(-110%);
+    z-index: 60;
+    box-shadow: 0 24px 48px rgba(2,6,23,0.44);
+    padding-top: 20px;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2,6,23,0.45);
+    z-index: 50;
+  }
+
+  /* Navbar adjustments */
+  .topbar {
+    padding: 0 14px;
+  }
+  .mobile-menu-button { display: inline-grid; }
+  .topbar-left { display: flex; align-items: center; gap: 12px; }
+  .topbar-search span { display: none; }
+
+  /* Sidebar close button inside the brand row */
+  .sidebar .brand { align-items: center; }
+  .sidebar-close { margin-left: auto; display: inline-grid; }
+}
+
+/* Desktop: hide mobile-specific controls */
+@media (min-width: 768px) {
+  .mobile-menu-button { display: none; }
+  .sidebar { position: static; transform: none; box-shadow: none; }
+  .sidebar-backdrop { display: none; }
+}
+
 
 .brand, .topbar-user, .topbar-search, .nav-link, .track-step, .duration, .detail-actions {
   display: flex;
